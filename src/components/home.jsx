@@ -26,38 +26,32 @@ class Home extends Component {
 
     handleSubmit(e){
         //Iniciando o localStorage
-        const id = this.state.id
+        // const id = this.state.id
 
         //Pegando todas as keys do localStorage
         const keys = Object.keys(localStorage)
         console.log(keys)
 
         //Pegar um objeto do array
-        const getObj = JSON.parse(localStorage.getItem(this.state.id))
+        // const getObj = JSON.parse(localStorage.getItem(this.state.id))
 
-        // for( var i=0; i < localStorage.length; i++){
-
-        //     //Pegar um objeto do array pelo state
-        //     const getObj = JSON.parse(localStorage.getItem(this.state.id))
-        //     //Pegar um objeto do array pelo laço
-        //     const obj = JSON.parse(localStorage.getItem(localStorage.key(i)))
-
-        //     console.log('laço for ' + keys[i] + " / " +obj)
-        //     console.log('objetos ' + getObj + " / " +obj)
-
-        //     console.log('condição ' + getObj.nome + " / " +this.state.nome)
+        for( var i=0; i < localStorage.length; i++){
             
-        //     if((getObj.nome === this.state.nome) && (getObj.senha === this.state.senha)){
-        //         alert('logado ' + this.state.nome+ " " + getObj.nome)
+            //Pegar um objeto do array
+            const getObj = JSON.parse(localStorage.getItem(keys[i]))
 
-        //     }
-        // }
+            //Peganso o nome e a senha digitados no input
+            const nomeUser = this.state.nome
+            const senhaUser = this.state.senha
 
-        if( getObj.nome === this.state.nome ){
-            this.props.history.push('/registro')
-        }else{
-            alert('Error')
+            //Consição para verificar se o nome e a senha correponde ao usuário
+            if( (getObj.nome === nomeUser) && (getObj.senha === senhaUser)){
+                console.log('Logado')
+            }else{
+                this.props.history.push('/NaoRegistrado')
+            }
         }
+
         e.preventDefault()
     }
 
@@ -68,7 +62,7 @@ class Home extends Component {
             <div className="pt-5">
                 <form onSubmit={this.handleSubmit} className="border border-blue p-2">
                     <div className="mb-3">
-                        <label htmlFor="inputUser" className="form-label">Login</label>
+                        <label htmlFor="inputUser" className="form-label">Usuário</label>
                         <input type="text" value={this.state.nome} onChange={this.clickNome} className="form-control" placeholder="Inserir Usuário"></input>
                     </div>
 

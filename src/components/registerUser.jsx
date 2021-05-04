@@ -30,65 +30,76 @@ class RegisterUser extends Component {
 
         //Pegando todas as keys do localStorage
         const keys = Object.keys(localStorage)
-        console.log( 'Keys: '+keys)
+        // console.log( 'Keys: '+keys)
 
-        //Pegar um objeto do array
-        const getObj = JSON.parse(localStorage.getItem(this.state.id))
+        //Gerar array com os dados nome e senha
+        const dados = {nome: this.state.nome, senha: this.state.senha}
         
+        //Condição para verificar se o localStorage esta vazio e criar um novo usuário
         if( !localStorage.getItem(id) ){
-            alert(`Dados gravos com sucesso: ${this.state.nome} - ${this.state.senha}`)           
-            
-            const dados = {nome: this.state.nome, senha: this.state.senha}
+            alert(`Dados gravos com sucesso!`)           
+            //Inserir no localStorage as informções digitadas no formulario.
             localStorage.setItem(id, JSON.stringify(dados))
             
-            
-        }else if( getObj.nome === this.state.nome ){
-            alert('passou')
-        }
+        }else{
 
-        //Pegar um objeto do array
-        // const getObjt = localStorage.getItem(this.state.id)
-        //     const getObj = JSON.parse(getObjt)
-        //     console.log("pegar: " + getObj.nome)
+            for(var i=0; i < localStorage.length; i++){
 
+                //Pegar um objeto do array
+                const getObj = JSON.parse(localStorage.getItem(keys[i]))
 
+                //Peganso o nome digitado no input
+                const nomeUser = this.state.nome
 
+                if( (getObj.nome === nomeUser)){
+                    console.log('Existe')
+                }else{
+                    // this.props.history.push('/NaoRegistrado')
+                    console.log('Não Existe')
+                    getObj.apend(localStorage.setItem(keys.length+1, JSON.stringify(dados)))
+                }
+            }
+                // for(const key of keys){
+                //     // console.log(key)
+                //     if(key !== keys.length){
+                //         const vetorTeste=[keys]
+                //         console.log('teste '+vetorTeste[keys])
+                //         alert('key: '+key+ '/ keys: '+keys)
+                //     }
+                // }
 
-
-        // htmlfor( var i=0; i < localStorage.length; i++){
-        //     const obj = localStorage.getItem(localStorage.key(i))
-        //     console.log('laço for ' + keys[i] + " / " +obj)
-
-            
-        //     if(keys[i] === id){
-        //         const id = this.state.id
-        //         alert('diferente id')
-
-        //         console.log("id: " + id)
-        //     }
-
-            
-        // }
+                // if( getObj.nome !== this.state.nome ){
+                //     alert('getObj.nome ' + getObj.nome + '/ this.state.nome ' + this.state.nome)
         
-        // const nome = localStorage.getItem('alexandre');
-        // const senha = localStorage.getItem('alexandre');
-        // console.log(nome)
-        // console.log(senha)
-
-        // if(nome === this.state.nome || senha === this.state.senha){
-        //     alert("logado")
-        // }
+                //     getObj.apend(localStorage.setItem(keys.length+1, JSON.stringify(dados)))
+                    
+                // }else{
+                //     alert('Já existe esse usuário!')
+                // }
+        }
         e.preventDefault()
     }
 
     render(){
         return(
-    <div>
+    <div className="pt-5">
+
+        <div className="container border border-aqua rounded shadow alert alert-primary">
+            <p className="text-center"><h1>Usuário não Registrado no sistema.</h1></p>
+        </div>
+
+        
+
         <div className="container">
             <div className="pt-5">
+
+            <div className="container border border-aqua rounded shadow alert alert-info">
+                <p className="text-center"><h6>Cadastrar novo Usuário e senha!</h6></p>
+            </div>
+
                 <form onSubmit={this.handleSubmit} className="border border-blue p-2">
                     <div className="mb-3">
-                        <label htmlFor="inputUser" className="form-label">Login</label>
+                        <label htmlFor="inputUser" className="form-label">Usuário</label>
                         <input type="text" value={this.state.nome} onChange={this.clickNome} className="form-control" placeholder="Inserir Usuário"></input>
                     </div>
 
