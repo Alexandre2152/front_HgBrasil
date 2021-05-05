@@ -46,9 +46,9 @@ class Home extends Component {
 
             //Consição para verificar se o nome e a senha correponde ao usuário
             if( (getObj.nome === nomeUser) && (getObj.senha === senhaUser)){
-                console.log('Logado')
+                this.props.history.push('/finance')
             }else{
-                this.props.history.push('/NaoRegistrado')
+                this.props.history.push('/registro')
             }
         }
 
