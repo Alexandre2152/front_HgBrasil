@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export default axios.create({
 
-    url: 'https://api.hgbrasil.com/',
+    url: 'https://api.hgbrasil.com',
     method: 'GET',
     headers: {
         'Content-Type': 'application/json; charset=utf-8',
