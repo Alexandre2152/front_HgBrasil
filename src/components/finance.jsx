@@ -1,99 +1,74 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react';
 // import axios from 'axios'
 
 // import api from '../api/api'
 
 
-export default class Finance extends Component{
+export default function Finance (){
+    const [data, setData] = useState([])
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(null)
 
-    state={
-        finances: [],
-        isLoaded: false,
-        error: null
-    }
-
-    async componentDidMount(){
-
-        // const response = await api.get('finance')
-        // this.setState({finances: response.data})
-
+    useEffect(() => {
+        setLoading(true)
+        
+        //Passando o headers com cookies de requisição
         const myHeaders = new Headers()
         myHeaders.append(
             'Cookie', '__cfduid=d2b6dfdef5fde0ccaebe63f095281b5581619807805',
             )
-
+        //Passando parametros do cabeçalho    
         const requestOptions = {
             method: 'GET',
             headers: myHeaders,
-            redirect: 'follow',
-            // mode: 'cors',
-            // 'strict-origin-when-cross-origin': true,
-            // 'Access-Control-Allow-Headers': 'Content-Type, x-requested-with',
-            // "referrerPolicy": "origin-when-cross-origin"
+            redirect: 'follow'
         };
-
-        // const headers ={ 
-        // method: 'GET',
-        //     headers: {
-        //     'Content-Type': 'application/json; charset=utf-8',
-        //     'Authorization': 'Bearer __cfduid=d2b6dfdef5fde0ccaebe63f095281b5581619807805',
-        //     'X-Requested-With': 'XMLHttpRequest',
-        //     }
-        // }
-
+        //Iniciando a chamada da url
         fetch('https://api.hgbrasil.com/finance?format=json-cors&key=f39f9063', requestOptions)
-        .then(res => res.txt())
-        .then((result) => {
-                this.setState({
-                    isLoaded: true,
-                    finances: result.finances
-                })
-                console.log(result);
-            },
-            (error) => {
-                this.setState({
-                    isLoaded: true,
-                    error
-                })
-            }
-        )
+        .then((res) => res.json())
+        .then((data) => { 
+                setData(data)
+                console.log(data)
+        })
+        .catch((err) => {
+                setError(err)
+            })
+        .finally(() => {
+            setLoading(false)
+        })
+    }, [])
 
-        // const url = 'https://api.hgbrasil.com/finance'
-        // const headers = {
-        //     method: 'get',
-        //     url: 'https://api.hgbrasil.com/finance',
-        //     headers: {
-        //         'Content-Type': 'application/json; charset=utf-8',
-        //         'Access-Control-Allow-Origin': '*',
-        //         'X-Requested-With': 'XMLHttpRequest'
-        //     },
-        //     redirect: 'follow',
-        //     mode: 'cors'
-        // }
-
-        // axios.get(url, headers)
-        // .then(res => {
-        //     const finances = res.data
-        //     this.setState({ finances })
-        //     console.log(finances)
-        // })
+    if(loading){
+        return <p>Carregando Dados...</p>
     }
 
-    render(){
+    const listar = Object.entries(data)
+
+    if(error || !Array.isArray(listar)){
+        console.log(listar)
+        return <p>Ocorreu um erro ao carregar seus dados!</p>
         
-        return(
-            <>
-            <div>
-                <ul>
-                    {this.state.finances.map( obj => (
-                        <li>{obj.results.currencies }</li>    
-                    ))}
-                        <li>Teste</li>
-                </ul>
-            </div>
-
-            </>
-
-        )
     }
+
+    console.log(listar)
+            return(
+                
+                <div>
+                    <ul>
+                        {listar.map( (item) => (
+                        
+                           <li key={item}>
+                               {JSON.stringify(item[1].currencies)  }
+                            </li>    
+                         
+                        ))} 
+                   </ul>
+                </div>
+    
+    
+            )
+
+        
+
+    
 }
