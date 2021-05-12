@@ -4,12 +4,12 @@ Para iniciar o projeto siga os seguintes passos.
 
 Abra o terminal e bash, acesse onde a psta esta salva e digite o comando a seguir
 
-### `$ yarn start`
+**$ yarn start**
 
 O projeto sera iniciado na porta:
 Porta: [http://localhost:3000](http://localhost:3000) Acesso essa porta no seu navagador.
 
-### `O projeto`
+### `.:O PROJETO:.`
 
 **Tela de login**
 
@@ -21,5 +21,5 @@ Feito o cadastro, poderá voltar e acessar o sistema
 
 Nesta tela terá em um sistema de `accordion` três campos, com a exibição de três tipos de informações consumidas da api `https://api.hgbrasil.com`. 
 
-### `Observaão`
+### `.:OBSERVAÇÃO:.`
 Caso a api não retorne as informações, tera que ser criado uma nova chave de acesso no sitema da `hgbrasil`.
