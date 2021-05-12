@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 class RegisterUser extends Component {
 
@@ -59,23 +60,6 @@ class RegisterUser extends Component {
                     getObj.apend(localStorage.setItem(keys.length+1, JSON.stringify(dados)))
                 }
             }
-                // for(const key of keys){
-                //     // console.log(key)
-                //     if(key !== keys.length){
-                //         const vetorTeste=[keys]
-                //         console.log('teste '+vetorTeste[keys])
-                //         alert('key: '+key+ '/ keys: '+keys)
-                //     }
-                // }
-
-                // if( getObj.nome !== this.state.nome ){
-                //     alert('getObj.nome ' + getObj.nome + '/ this.state.nome ' + this.state.nome)
-        
-                //     getObj.apend(localStorage.setItem(keys.length+1, JSON.stringify(dados)))
-                    
-                // }else{
-                //     alert('Já existe esse usuário!')
-                // }
         }
         e.preventDefault()
     }
@@ -107,8 +91,10 @@ class RegisterUser extends Component {
                         <label htmlFor="inputPassword" className="form-label">Senha</label>
                         <input type="password" value={this.state.senha} onChange={this.clickSenha} className="form-control" placeholder="Inserir Senha"></input>
                     </div>
-
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <div className="text text-center">
+                    <Link to="/"> <button type="submit" className="btn btn-primary">Voltar</button> </Link>
+                    <button type="submit" className="btn btn-primary">Cadastrar</button>
+                    </div>
                 </form>
             </div>
         </div>
