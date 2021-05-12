@@ -5,6 +5,8 @@ import Home from '../components/home'
 import Register from '../components/registerUser'
 import Finance from '../components/finance'
 
+import HOC from '../components/autoLogout'
+
 const Routes = () => (
     <BrowserRouter>
         <Switch>

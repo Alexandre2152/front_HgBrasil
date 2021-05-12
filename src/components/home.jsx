@@ -34,8 +34,10 @@ class Home extends Component {
 
         //Pegar um objeto do array
         // const getObj = JSON.parse(localStorage.getItem(this.state.id))
-
-        for( var i=0; i < localStorage.length; i++){
+if(!localStorage.getItem(keys)){
+                this.props.history.push('/registro')
+            }
+        for( let i=0; i < localStorage.length; i++){
             
             //Pegar um objeto do array
             const getObj = JSON.parse(localStorage.getItem(keys[i]))
@@ -43,6 +45,8 @@ class Home extends Component {
             //Peganso o nome e a senha digitados no input
             const nomeUser = this.state.nome
             const senhaUser = this.state.senha
+
+            
 
             //Consição para verificar se o nome e a senha correponde ao usuário
             if( (getObj.nome === nomeUser) && (getObj.senha === senhaUser)){
@@ -71,7 +75,7 @@ class Home extends Component {
                         <input type="password" value={this.state.senha} onChange={this.clickSenha} className="form-control" placeholder="Inserir Senha"></input>
                     </div>
 
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <button type="submit" className="btn btn-primary">ENTRAR</button>
                 </form>
             </div>
         </div>

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Accordion, Button, Card, Table } from 'react-bootstrap';
+import { Link } from 'react-router-dom'
 
+import ToggleButton from 'react-bootstrap/ToggleButton'
 
 export default function Finance (){
     const [data, setData] = useState([])
@@ -898,6 +900,10 @@ console.log(listar)
                             </Accordion.Collapse>
                         </Card>
                     </Accordion>
+
+                    <div className="pt-3">
+                    <Link to="/"> <Button type="submit" variant="primary" size="lg" block>Voltar</Button> </Link>
+                    </div>
 
                 </div>
             )    
