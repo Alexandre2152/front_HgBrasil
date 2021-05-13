@@ -8,7 +8,7 @@ import Finance from '../components/finance'
 import HOC from '../components/autoLogout'
 
 const Routes = () => (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Switch>
             <Route exact path="/" component={ Home } />
             <Route exact path="/registro" component={ Register } />
