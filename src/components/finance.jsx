@@ -23,7 +23,7 @@ export default function Finance (){
         const requestOptions = {
             method: 'GET',
             headers: myHeaders,
-            redirect: 'follow'
+            redirect: 'follow',
         };
         //Iniciando a chamada da url
         fetch('https://api.hgbrasil.com/finance?format=json-cors&key=fd2f63b9', requestOptions)
