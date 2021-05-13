@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/front_HgBrasil/static/js/main.daccc380.chunk.js",
-    "main.js.map": "/front_HgBrasil/static/js/main.daccc380.chunk.js.map",
+    "main.js": "/front_HgBrasil/static/js/main.f8fe8203.chunk.js",
+    "main.js.map": "/front_HgBrasil/static/js/main.f8fe8203.chunk.js.map",
     "runtime-main.js": "/front_HgBrasil/static/js/runtime-main.63c318e7.js",
     "runtime-main.js.map": "/front_HgBrasil/static/js/runtime-main.63c318e7.js.map",
     "static/css/2.150d169a.chunk.css": "/front_HgBrasil/static/css/2.150d169a.chunk.css",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.63c318e7.js",
     "static/css/2.150d169a.chunk.css",
     "static/js/2.48fe5d50.chunk.js",
-    "static/js/main.daccc380.chunk.js"
+    "static/js/main.f8fe8203.chunk.js"
   ]
 }
